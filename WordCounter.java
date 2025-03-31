@@ -111,6 +111,7 @@ public class WordCounter {
                     System.out.println("Found " + wordCount + " words."); 
                 } 
                 catch (TooSmallText e) {
+                    System.out.println(e);
                 } 
                 catch(InvalidStopwordException e) {
                 }
