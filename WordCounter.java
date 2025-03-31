@@ -10,11 +10,23 @@ public class WordCounter {
 
     public static int processtext(StringBuffer text, String stopword) throws InvalidStopwordException {
         int wordcount = 0;
-        Pattern regex = Pattern.compile("your regular expression here");
+        Pattern regex = Pattern.compile("\\b\\w+\\b");
         Matcher regexMatcher = regex.matcher(text);
-        while (regexMatcher.find()) {
-            System.out.println("I just found the word: " + regexMatcher.group());
-        } 
+        boolean wordFound = false;
+
+        // If the stopword is null, your method will count all words in the file. The methods returns the integer word count, unless the count was less than five, it which case it raises a TooSmallText exception
+        if (stopword == null) {
+            while (regexMatcher.find()) {
+                wordcount++;
+            }
+            if (wordcount < 5) {
+                throw new TooSmallText(wordcount);
+            } else {
+                return wordcount;
+            }
+        }
+
+        
     }
 
     public static StringBuffer processFile (String path) {
