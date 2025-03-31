@@ -8,8 +8,13 @@ import java.util.*;
 
 public class WordCounter {
 
-    public static int processtext(StringBuffer text, String stopword) {
-
+    public static int processtext(StringBuffer text, String stopword) throws InvalidStopwordException {
+        int wordcount = 0;
+        Pattern regex = Pattern.compile("your regular expression here");
+        Matcher regexMatcher = regex.matcher(text);
+        while (regexMatcher.find()) {
+            System.out.println("I just found the word: " + regexMatcher.group());
+        } 
     }
 
     public static StringBuffer processFile (String path) {
