@@ -117,7 +117,13 @@ public class WordCounter {
                 }
             } 
             catch (EmptyFileException e) {
-                System.out.println(e);
+                // System.out.println(e);
+                try {
+                    throw new TooSmallText(0);
+                } 
+                catch (TooSmallText f) {
+                    System.out.println(f);
+                }
             } 
             catch (IOException e) {
             }
